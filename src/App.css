@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+:root {
+  --radius: 6px;
+  --spacing: 8px;
+  --shadow: 0 1px 6px 0 #DCDEE3;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body {
+  font-family: "Ubuntu", arial, sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 768px;
+  padding: calc(var(--spacing) * 2) 0;
+  margin: calc(var(--spacing) * 2) auto;
+  background: #f3f3f3;
+  border-radius: var(--radius);
+}
+
+#app {
+  margin: 0 auto;
+  width: 70%;
+}
+
+input {
+  margin: 0 auto calc(var(--spacing) * 2);
+  display: block;
+  width: 100%;
+  padding: var(--spacing);
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  border: none;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+}
+
+.btn--submit {
+  display: block;
+  margin: 0 auto calc(var(--spacing) * 2);
+  border-radius: var(--radius);
+  padding: var(--spacing) calc(var(--spacing) * 1.5);
+  background: #1E9CC0;
+  font-family: inherit;
+  text-transform: uppercase;
   color: white;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.message__container {
+  display: flex;
+  margin-bottom: var(--spacing);
+  border-radius: var(--radius);
+  padding: calc(var(--spacing) * 1.5);
+  border: none;
+  font-size: 14px;
+  background: white;
+  box-shadow: var(--shadow);
+}
+.message__container > div:first-child {
+  flex: 1;
+  margin-right: calc(var(--spacing) * 2);
+  white-space: pre-wrap;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input--form {
+  position: fixed;
+  width: 96%;
+  bottom: 0px;
+  margin-left: 2%;
+  margin-right: 2%;
+  background-color: white;
+}
+
+.chat--box{
+  margin-bottom: 10%;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
 }
