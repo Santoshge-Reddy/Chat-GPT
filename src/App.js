@@ -1,6 +1,8 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import { BsBack } from "react-icons/bs";
+
 const { useState, Fragment } = React;
 const url = 'https://rakeshkumarwebanalytic.pythonanywhere.com/rest'
 // var url = 'http://127.0.0.1:5000/rest'
@@ -11,11 +13,13 @@ function App() {
 
   const [value, setInputValue] = useState('');
   const [messages, setMessages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
   
   const updateValue = ({ target }) => setInputValue(target.value); 
 
 
   const addPosts = async (data) => {
+    setIsLoading(true)
     await fetch(url, {
     method: 'POST',
     // mode: 'no-cors',
@@ -32,8 +36,10 @@ function App() {
       console.log(data.data);
       var message = data.data.replace(/^\s+|\s+$/g, '');
       const time = new Date().toLocaleTimeString();
-      const newMessage = <NewMessage key={time} message={message} timeStamp={time} />;
+      const newMessage = <NewMessage key={time} message={message} timeStamp={time} copy={true} />;
+      setIsLoading(false)
       setMessages(prevState => ([...prevState, newMessage]));
+      
     })
     .catch((err) => {
        console.log(err.message);
@@ -47,7 +53,7 @@ function App() {
     }
 
     const time = new Date().toLocaleTimeString();
-    const newMessage = <NewMessage key={time} message={value} timeStamp={time} />;
+    const newMessage = <NewMessage key={time} message={value} timeStamp={time} copy={false} />;
     setMessages(prevState => ([...prevState, newMessage]));
     setInputValue('');
 
@@ -65,10 +71,13 @@ function App() {
     <>
       <div className="chat--box">
         {messages}
+        { isLoading ? <div className="message__container">
+              <div className='loading'>Loading .............</div>
+            </div> : '' }
       </div>
       <div className="input--form">
-        <TextField handleOnChange={updateValue} value={value} />
-        <button className="btn--submit" onClick={updateMessages}>Send</button>
+        <TextField handleOnChange={updateValue} value={value}  />
+        <button className="btn--submit" onClick={updateMessages} >   Generate </button>
       </div>
     </>
   );
@@ -79,13 +88,15 @@ function App() {
 const TextField = ({ value, handleOnChange }) => (
   <>
   <input placeholder="Write your message" onChange={handleOnChange} value={value} />
+  {/* <BsFillCaretRightFill /> */}
   </>
 )
 
-const NewMessage = ({ message, timeStamp }) => (
+const NewMessage = ({ message, timeStamp, copy }) => (
   <div className="message__container">
     <div>{message}</div>
-    <div>{timeStamp}</div>
+    {/* <div>{timeStamp}</div> */}
+    {copy ? <div style={{marginRight:'10px'}} onClick={() => {navigator.clipboard.writeText(message)}}><BsBack /></div> : ''}
   </div>
 );
 

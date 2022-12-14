@@ -68,7 +68,7 @@ input {
   border-radius: var(--radius);
   padding: calc(var(--spacing) * 1.5);
   border: none;
-  font-size: 14px;
+  font-size: 15px;
   background: white;
   box-shadow: var(--shadow);
 }
@@ -92,4 +92,35 @@ input {
   margin-top: 2%;
   margin-left: 2%;
   margin-right: 2%;
+}
+
+
+.loading {
+  color: hsl(0, 0%, 28%);
+  /* font-size: 50px!important; */
+  font-weight: bold!important;
+  font-family: monospace;
+  letter-spacing: 1px!important;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.loading {
+  /* padding: 64px; */
+  background: linear-gradient(to right, hsl(0, 0%, 16%) 0, hsl(0, 0%, 100%) 10%, hsl(0, 0%, 18%) 20%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 600px;
+  }
+  100% {
+    background-position: 600px;
+  }
 }
