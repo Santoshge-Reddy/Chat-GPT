@@ -4,8 +4,8 @@ import React from 'react';
 import { BsBack } from "react-icons/bs";
 
 const { useState, Fragment } = React;
-// const url = 'https://rakeshkumarwebanalytic.pythonanywhere.com/rest'
-var url = 'http://127.0.0.1:5000/rest'
+const url = 'https://rakeshkumarwebanalytic.pythonanywhere.com/rest'
+// var url = 'http://127.0.0.1:5000/rest'
 
 
   
