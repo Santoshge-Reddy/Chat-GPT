@@ -46,7 +46,8 @@ function App() {
     });
   };
 
-  const updateMessages = () => {
+  const updateMessages = (e) => {
+    e.preventDefault();
     if (!value) {
       return;
     }
@@ -72,12 +73,15 @@ function App() {
       <div className="chat--box">
         {messages}
         { isLoading ? <div className="message__container">
-              <div className='loading'>Loading .............</div>
+              <div className='typewriter'><p>Loading ...</p></div>
             </div> : '' }
       </div>
       <div className="input--form">
+      <form onSubmit={updateMessages}>
         <TextField handleOnChange={updateValue} value={value}  />
-        <button className="btn--submit" onClick={updateMessages} >   Generate </button>
+        <button  type="submit" className="btn--submit" onClick={updateMessages} >   Generate </button>
+        
+      </form>
       </div>
     </>
   );
@@ -94,9 +98,9 @@ const TextField = ({ value, handleOnChange }) => (
 
 const NewMessage = ({ message, timeStamp, copy }) => (
   <div className="message__container">
-    <div>{message}</div>
+    <div><p>{message}</p></div>
     {/* <div>{timeStamp}</div> */}
-    {copy ? <div style={{marginRight:'10px'}} onClick={() => {navigator.clipboard.writeText(message)}}><BsBack /></div> : ''}
+    {copy ? <div  style={{marginRight:'10px', cursor:'pointer' }} onClick={() => {navigator.clipboard.writeText(message)}}><BsBack /></div> : ''}
   </div>
 );
 

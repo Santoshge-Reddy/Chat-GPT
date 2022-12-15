@@ -66,7 +66,7 @@ input {
   display: flex;
   margin-bottom: var(--spacing);
   border-radius: var(--radius);
-  padding: calc(var(--spacing) * 1.5);
+  padding: calc(var(--spacing));
   border: none;
   font-size: 15px;
   background: white;
@@ -95,17 +95,17 @@ input {
 }
 
 
-.loading {
+.typewriter {
   color: hsl(0, 0%, 28%);
   /* font-size: 50px!important; */
   font-weight: bold!important;
   font-family: monospace;
   letter-spacing: 1px!important;
   cursor: pointer;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
-.loading {
+.typewriter {
   /* padding: 64px; */
   background: linear-gradient(to right, hsl(0, 0%, 16%) 0, hsl(0, 0%, 100%) 10%, hsl(0, 0%, 18%) 20%);
   -webkit-background-clip: text;
