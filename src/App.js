@@ -4,8 +4,8 @@ import React from 'react';
 import { BsBack } from "react-icons/bs";
 
 const { useState, Fragment } = React;
-const url = 'https://rakeshkumarwebanalytic.pythonanywhere.com/rest'
-// var url = 'http://127.0.0.1:5000/rest'
+// const url = 'https://rakeshkumarwebanalytic.pythonanywhere.com/rest'
+var url = 'http://127.0.0.1:5000/rest'
 
 
   
@@ -36,7 +36,7 @@ function App() {
       console.log(data.data);
       var message = data.data.replace(/^\s+|\s+$/g, '');
       const time = new Date().toLocaleTimeString();
-      const newMessage = <NewMessage key={time} message={message} timeStamp={time} copy={true} />;
+      const newMessage = <NewMessage key={time} message={message} timeStamp={time} copy={true} meta='AI: ' />;
       setIsLoading(false)
       setMessages(prevState => ([...prevState, newMessage]));
       
@@ -46,24 +46,24 @@ function App() {
     });
   };
 
-
   const updateMessages = () => {
     if (!value) {
       return;
     }
 
     const time = new Date().toLocaleTimeString();
-    const newMessage = <NewMessage key={time} message={value} timeStamp={time} copy={false} />;
+    const newMessage = <NewMessage key={time} message={value} timeStamp={time} copy={false} meta='Human: ' />;
     setMessages(prevState => ([...prevState, newMessage]));
     setInputValue('');
 
     var text = ''
     messages.forEach(myFunction);
     function myFunction(item) {
-      text = `${text} \n\n ${item.props.message} \n\n`
+      text = `${text} \n\n ${item.props.meta} ${item.props.message} \n\n`
     }
-    console.log(text)
-    addPosts(value)
+    text = `${text} \n\n ${value}`
+    // console.log(text)
+    addPosts(text)
     
   }
 
