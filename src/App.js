@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { BsBack } from "react-icons/bs";
 
 const { useState, Fragment } = React;
@@ -8,6 +8,12 @@ const url = 'https://rakeshkumarwebanalytic.pythonanywhere.com/rest'
 // var url = 'http://127.0.0.1:5000/rest'
 
 
+
+const AlwaysScrollToBottom = () => {
+  const elementRef = useRef();
+  useEffect(() => elementRef.current.scrollIntoView());
+  return <div ref={elementRef} />;
+};
   
 function App() {
 
@@ -75,6 +81,8 @@ function App() {
         { isLoading ? <div className="message__container">
               <div className='typewriter'><p>Loading ...</p></div>
             </div> : '' }
+        <AlwaysScrollToBottom />
+
       </div>
       <div className="input--form">
       <form onSubmit={updateMessages}>

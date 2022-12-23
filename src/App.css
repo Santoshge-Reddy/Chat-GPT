@@ -87,8 +87,18 @@ input {
   background-color: white;
 }
 
+@media (min-width: 767px) {
+  .chat--box{
+    margin-bottom: 20%;
+  }
+}
+@media (max-width: 767px) {
+  .chat--box{
+    margin-bottom: 30%;
+  }
+}
+
 .chat--box{
-  margin-bottom: 30%;
   margin-top: 2%;
   margin-left: 2%;
   margin-right: 2%;
