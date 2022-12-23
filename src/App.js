@@ -100,7 +100,7 @@ const NewMessage = ({ message, timeStamp, copy }) => (
   <div className="message__container">
     <div><p>{message}</p></div>
     {/* <div>{timeStamp}</div> */}
-    {copy ? <div  style={{marginRight:'10px', cursor:'pointer' }} onClick={() => {navigator.clipboard.writeText(message)}}><BsBack /></div> : ''}
+    {copy ? <div  style={{marginRight:'10px' }} ><button style={{cursor:'pointer'}} onClick={() => {navigator.clipboard.writeText(message)}}>Copy</button></div> : ''}
   </div>
 );
 
