@@ -134,3 +134,8 @@ input {
     background-position: 600px;
   }
 }
+
+
+.user__message{
+  background-color: #1e9cc078;
+}

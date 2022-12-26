@@ -105,7 +105,7 @@ const TextField = ({ value, handleOnChange }) => (
 )
 
 const NewMessage = ({ message, timeStamp, copy }) => (
-  <div className="message__container">
+  <div className={`message__container ${copy ? '' : 'user__message'}`}>
     <div><p>{message}</p></div>
     {/* <div>{timeStamp}</div> */}
     {copy ? <div  style={{marginRight:'10px' }} ><button style={{cursor:'pointer'}} onClick={() => {navigator.clipboard.writeText(message)}}>Copy</button></div> : ''}
